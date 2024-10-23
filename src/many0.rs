@@ -1,5 +1,5 @@
 /*
- * delimited
+ * many0
  */
 
 pub mod parsers {

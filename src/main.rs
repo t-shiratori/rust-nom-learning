@@ -1,6 +1,7 @@
 mod delimited;
 mod many0;
 mod pair;
+mod statement;
 mod tag;
 
 fn main() {
@@ -27,4 +28,9 @@ fn main() {
      */
     many0::parsers::tag_parser();
     many0::parsers::expr_parser();
+
+    /*
+     * statement
+     */
+    statement::parsers::statements_parser();
 }
