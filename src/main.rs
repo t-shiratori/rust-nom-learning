@@ -1,3 +1,4 @@
+mod alt;
 mod delimited;
 mod many0;
 mod pair;
@@ -5,6 +6,11 @@ mod statement;
 mod tag;
 
 fn main() {
+    /*
+     *  alt
+     */
+    alt::parsers::alt_parser();
+
     /*
      *  tag
      */
