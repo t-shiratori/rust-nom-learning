@@ -27,6 +27,13 @@ pub mod parsers {
             delimited(multispace0, alphanumeric1, multispace0),
         );
 
+        assert_eq!(plus_space_parser(" + 2"), Ok(("", ('+', "2"))));
+
+        assert_eq!(
+            plus_space_parser("1 + 2"),
+            Err(Err::Error(("1 + 2", ErrorKind::Char)))
+        );
+
         assert_eq!(
             plus_space_parser("1+2"),
             Err(Err::Error(("1+2", ErrorKind::Char)))
@@ -51,7 +58,5 @@ pub mod parsers {
             plus_space_parser("1 + 2 + 6"),
             Err(Err::Error(("1 + 2 + 6", ErrorKind::Char)))
         );
-
-        assert_eq!(plus_space_parser(" + 2"), Ok(("", ('+', "2"))));
     }
 }
