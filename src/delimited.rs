@@ -40,14 +40,19 @@ pub mod parsers {
     pub fn plus_parser() {
         let mut delimited_plus_parser = delimited(multispace0, char('+'), multispace0);
 
+        assert_eq!(delimited_plus_parser("+"), Ok(("", '+')));
+
+        assert_eq!(delimited_plus_parser(" + "), Ok(("", '+')));
+
         assert_eq!(
             delimited_plus_parser("1+2"),
             Err(Err::Error(("1+2", ErrorKind::Char)))
         );
 
-        assert_eq!(delimited_plus_parser("+"), Ok(("", '+')));
-
-        assert_eq!(delimited_plus_parser(" + "), Ok(("", '+')));
+        assert_eq!(
+            delimited_plus_parser("1 + 2"),
+            Err(Err::Error(("1 + 2", ErrorKind::Char)))
+        );
 
         assert_eq!(
             delimited_plus_parser(""),
